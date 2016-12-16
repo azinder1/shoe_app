@@ -1,0 +1,32 @@
+<div class="jumbotron text-center">
+  <h2>Welcome to Foot Unlocker</h2>
+</div>
+<div class="row">
+  <div class="col-md-5 col-md-offset-1">
+
+    <% if !@stores.any? %>
+    <h3>There are no stores on record</h3>
+    <% else %>
+    <%@stores.each do |store|%>
+    <h2><%=store.name%></h2>
+    <ul>
+      <li><%=store.street_address%></li>
+      <li><%=store.city%>, <%=store.state%> <%=store.zip_code%></li>
+    </ul>
+    <%end%>
+    <%end%>
+    <a class="btn btn-warning" href="/store/new">Add a Store</a>
+  </div>
+  <div class="col-md-5">
+    <% if !@brands.any? %>
+    <h3>There are no brands on record</h3>
+    <% else %>
+    <ul>
+      <%@brands.each do |brand|%>
+      <li><%=brand.name%>-<%=brand.shoe_type%></li>
+      <%end%>
+    </ul>
+    <%end%>
+    <a class="btn btn-primary" href="/brand/new">Add a Brand</a>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+<% if !@stores.any?%>
+<p><em>There are no stores added to Foot Unlocker yet</em></p>
+<% else %>
+   <select class="form-control" name="ingredients">
+     <% @stores.each do |store| %>
+      <option value="<%store.id%>"><%= store.name %></option>
+     <% end %>
+<% end %>
