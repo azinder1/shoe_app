@@ -10,10 +10,17 @@ describe(Store) do
     it "test for name of brand" do
       expect(brand1.name).to(eq("Nike"))
     end
-    it "test for integration with stores" do
+  end
+  describe("join table test") do
+    it "can match a store with a brand" do
+      store1.brands.push(brand1)
+      expect(store1.brands).to(eq([brand1]))
+    end
+  end
+  describe("join table test") do
+    it "test for integration update with brands" do
       store1.update({:brand_ids => [brand1.id()]})
-      store2.update({:brand_ids => [brand1.id()]})
-      expect(brand1.stores).to(eq([store1, store2]))
+      expect(brand1.stores).to(eq([store1]))
     end
   end
 end

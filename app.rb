@@ -73,3 +73,19 @@ post('/brand/stores') do
   @stores = Store.all
   erb(:brand)
 end
+
+delete('/brands/delete/:id') do
+  @brand = Brand.find(params['id'].to_i)
+  @brand.delete
+  @stores = Store.all
+  @brands = Brand.all
+  erb(:index)
+end
+
+delete('/stores/delete/:id') do
+  @store = Store.find(params['id'].to_i)
+  @store.delete
+  @stores = Store.all
+  @brands = Brand.all
+  erb(:index)
+end

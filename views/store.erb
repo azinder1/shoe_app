@@ -15,6 +15,11 @@
         <% end %>
       <% end %>
     </ul>
+    <form  action="/stores/delete/<%=@store.id%>" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <button class="btn btn-danger" type="sumbit" name="button">Delete</button>
+    </form><br>
+    <a class="btn btn-warning" href="/store/<%=@store.id%>/edit">Update</a>
   </div>
   <div class="col-md-4">
   <h3>Add a Store To Brand</h3>
@@ -35,3 +40,4 @@
   </form>
   </div>
 </div>
+<a href="/">Home</a>
