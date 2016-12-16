@@ -11,7 +11,7 @@
       <p><em>There are no stores added to <%=@store.name%> yet</em></p>
       <% else %>
         <% @store_brands.each do |store| %>
-        <li><%= store.name %></li>
+          <li><%= store.name %></li>
         <% end %>
       <% end %>
     </ul>
@@ -21,11 +21,12 @@
   <% if !@brands.any?%>
   <p><em>There are no brands added to Foot Unlocker yet</em></p>
   <% else %>
-  <form class="" action="index.html" method="post">
+  <form action="/store/brands" method="post">
+    <input type="hidden" name="id" value="<%=@store.id%>">
     <div class="form-group">
-      <select class="form-control" name="ingredients">
+      <select class="form-control" name="brands">
         <% @brands.each do |brand| %>
-        <option value="<%brand.id%>"><%= brand.name %></option>
+          <option value="<%=brand.id%>"><%= brand.name %></option>
         <% end %>
       </select>
     </div>

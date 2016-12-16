@@ -54,3 +54,22 @@ get('/store/:id') do
   @store_brands = @store.brands
   erb(:store)
 end
+
+
+post('/store/brands') do
+  @brand = Brand.find(params.fetch('brands').to_i)
+  @store = Store.find(params['id'].to_i)
+  @store.brands.push(@brand)
+  @store_brands = @store.brands
+  @brands = Brand.all
+  erb(:store)
+end
+
+post('/brand/stores') do
+  @store = Store.find(params.fetch('stores').to_i)
+  @brand = Brand.find(params['id'].to_i)
+  @brand.stores.push(@store)
+  @brand_stores = @brand.stores
+  @stores = Store.all
+  erb(:brand)
+end
