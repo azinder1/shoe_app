@@ -6,6 +6,6 @@ class Brand < ActiveRecord::Base
 private
 
   def upcase_first_letter
-    self.name=(self.name().capitalize())
+    self.name=(name().titleize())
   end
 end

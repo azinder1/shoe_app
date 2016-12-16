@@ -15,12 +15,20 @@ describe(Brand) do
     it "can match a store with a brand" do
       brand1.stores.push(store1)
       expect(brand1.stores).to(eq([store1]))
-      end
     end
-  describe('update pathway') do
-    it "test for integration and update with stores" do
-      brand1.update({:store_ids => [store1.id()]})
-      expect(store1.brands).to(eq([brand1]))
+  end
+  describe("can take a word and titlecase it") do
+    it "titalizes words" do
+      brand3 = Brand.create({:name => "spooortiva", :shoe_type => "Climbing"})
+      expect(brand3.name).to(eq('Spooortiva'))
+    end
+  end
+  describe("uniqueness path") do
+    it "prevents redundant addition of names" do
+      brand1 = Brand.create({:name => "Nike", :shoe_type => "Athletic"})
+      brand2 = Brand.create({:name => "Sportiva", :shoe_type => "Climbing"})
+      brand3 = Brand.create({:name => "Nike", :shoe_type => "Running"})
+      expect(Brand.all).to(eq([brand1, brand2]))
     end
   end
 end

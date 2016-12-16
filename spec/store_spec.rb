@@ -23,4 +23,18 @@ describe(Store) do
       expect(brand1.stores).to(eq([store1]))
     end
   end
+  describe("can take a word and titlecase it") do
+    it "titalizes words" do
+      store3 = Store.create({:name => "fooooootlocker", :zip_code => 97213, :city => 'Portland', :state => "Oregon", :street_address => "123 Sesame Street"})
+    expect(store3.name).to(eq('Fooooootlocker'))
+    end
+  end
+  describe("uniqueness path") do
+    it "prevents redundant addition of names" do
+      store1 = Store.create({:name => "Footlocker", :zip_code => 97212, :city => 'Portland', :state => "Oregon", :street_address => "123 Sesame Street"})
+      store2 = Store.create({:name => "Nike Outlet", :zip_code => 97213, :city => 'Portland', :state => 'Oregon', :street_address => '123 Nike Town Street'})
+      store3 = Store.create({:name => "Footlocker", :zip_code => 97213, :city => 'Portland', :state => "Oregon", :street_address => "123 Sesame Street"})
+      expect(Store.all).to(eq([store1, store2]))
+    end
+  end
 end

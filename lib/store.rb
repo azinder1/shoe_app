@@ -6,6 +6,6 @@ class Store < ActiveRecord::Base
 private
 
   def upcase_first_letter
-    self.name=(name().capitalize())
+    self.name=(name().titleize())
   end
 end

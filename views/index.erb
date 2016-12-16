@@ -8,12 +8,12 @@
     <h3>There are no stores on record</h3>
     <% else %>
     <%@stores.each do |store|%>
-    <a href="/store/<%=store.id%>"><h2><%=store.name%></h2></a>
-    <ul>
-      <li><%=store.street_address%></li>
-      <li><%=store.city%>, <%=store.state%> <%=store.zip_code%></li>
-    </ul>
-    <%end%>
+      <a href="/store/<%=store.id%>"><h2><%=store.name%></h2></a>
+      <ul>
+        <li><%=store.street_address%></li>
+        <li><%=store.city%>, <%=store.state%> <%=store.zip_code%></li>
+      </ul>
+      <%end%>
     <%end%>
     <a class="btn btn-warning" href="/store/new">Add a Store</a>
   </div>
@@ -21,11 +21,9 @@
     <% if !@brands.any? %>
     <h3>There are no brands on record</h3>
     <% else %>
-    <ul>
       <%@brands.each do |brand|%>
-      <a href="/brand/<%=brand.id%>"><li><%=brand.name%>-<%=brand.shoe_type%></li></a>
+      <a href="/brand/<%=brand.id%>"><h2><%=brand.name%>-<%=brand.shoe_type%></h2></a>
       <%end%>
-    </ul>
     <%end%>
     <a class="btn btn-primary" href="/brand/new">Add a Brand</a>
   </div>
