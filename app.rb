@@ -40,3 +40,17 @@ post('/stores') do
   @brands = Brand.all
   erb(:index)
 end
+
+get('/brand/:id') do
+  @brand = Brand.find(params['id'])
+  @stores = Store.all
+  @brand_stores = @brand.stores
+  erb(:brand)
+end
+
+get('/store/:id') do
+  @store = Store.find(params['id'])
+  @brands = Brand.all
+  @store_brands = @store.brands
+  erb(:store)
+end

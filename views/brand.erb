@@ -1,8 +1,33 @@
-<% if !@stores.any?%>
-<p><em>There are no stores added to Foot Unlocker yet</em></p>
-<% else %>
-   <select class="form-control" name="ingredients">
-     <% @stores.each do |store| %>
-      <option value="<%store.id%>"><%= store.name %></option>
-     <% end %>
-<% end %>
+
+<div class="row">
+  <div class="jumbotron">
+    <h2>Brand Information</h2>
+  </div>
+  <div class="col-md-8">
+    <h3><%=@brand.name%>--<%=@brand.shoe_type%></h3>
+    <ul>
+      <% if !@brand_stores.any?%>
+      <p><em>There are no Brands added to <%=@brand.name%> yet</em></p>
+      <% else %>
+        <% @brand_stores.each do |brand| %>
+        <li<%= brand.name %></li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+  <div class="col-md-4">
+  <h3>Add a Brand To This Store</h3>
+    <% if !@stores.any?%>
+    <p><em>There are no stores added to Foot Unlocker yet</em></p>
+    <% else %>
+    <form class="" action="/store/stores/add" method="post">
+    <select class="form-control" name="ingredients">
+      <% @stores.each do |store| %>
+        <option value="<%store.id%>"><%= store.name %></option>
+      <% end %>
+    </select>
+    <button class="btn btn-info" type="submit" name="button">Add a Store</button>
+      <% end %>
+    </form>
+  </div>
+</div>
